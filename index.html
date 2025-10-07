@@ -13,7 +13,7 @@
             --text-color: #333;
             --light-text: #fff;
             --font-main: 'Garamond', serif;
-            --font-header: 'Playfair Display', serif; /* Use a more elegant font if possible */
+            --font-header: 'Playfair Display', serif; 
         }
         * {
             box-sizing: border-box;
@@ -95,11 +95,11 @@
         }
 
 
-        /* Hero Section - IMAGE URL FIXED: ADDED ./ for relative path */
+        /* Hero Section - PATH UPDATED to simple file name */
         .hero {
-            /* Using the Office/Lobby image for the background - Note the %20 for spaces and the ./ */
+            /* Using the hero.png image for the background */
             background: linear-gradient(rgba(106, 5, 173, 0.4), rgba(106, 5, 173, 0.4)), 
-                        url('./ChatGPT%20Image%20Oct%207,%202025,%2001_22_18%20AM.png') no-repeat center center/cover;
+                        url('./hero.png') no-repeat center center/cover;
             color: var(--light-text);
             text-align: center;
             padding: 120px 5%;
@@ -107,7 +107,7 @@
         }
         .hero h2 {
             font-family: var(--font-header);
-            font-size: 3.5em; /* Slightly larger text for impact */
+            font-size: 3.5em; 
             margin-bottom: 10px;
             color: var(--light-text);
         }
@@ -139,24 +139,24 @@
             font-size: 1.5em;
         }
 
-        /* About/Mission Specific - IMAGE PATH FIXED: ADDED ./ for relative path */
+        /* About/Mission Specific - PATH UPDATED to simple file name */
         .mission-grid {
             display: flex;
             flex-wrap: wrap;
-            gap: 40px; /* Increased gap */
-            align-items: flex-start; /* Align content to the top */
+            gap: 40px; 
+            align-items: flex-start; 
         }
         .mission-statement, .values-list {
             flex: 1;
             min-width: 300px;
         }
         .mission-image {
-            flex-basis: 100%; /* Image takes full width on small screens */
+            flex-basis: 100%; 
             text-align: center;
             margin-bottom: 20px;
         }
         .mission-image img {
-            max-width: 70%; /* Fixed to 70% as requested */
+            max-width: 70%; 
             height: auto;
             border-radius: 8px;
             box-shadow: 0 4px 10px rgba(0,0,0,0.1);
@@ -201,7 +201,7 @@
             color: #777;
         }
 
-        /* Party Packages Specific - IMAGE PATH FIXED */
+        /* Party Packages Specific - PATH UPDATED to simple file name */
         .party-packages-container {
             display: flex;
             flex-direction: column;
@@ -212,7 +212,7 @@
             margin-bottom: 30px;
         }
         .party-image-banner img {
-            max-width: 80%; /* Smaller than 100% to keep focus */
+            max-width: 80%; 
             height: auto;
             border-radius: 10px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.2);
@@ -370,7 +370,8 @@
                     <li><a href="#about">About Us</a></li>
                     <li><a href="#tuition">Tuition</a></li>
                     <li><a href="#parties">Parties</a></li>
-                    <li><a href="#contact">Contact Us</a></li> <li><a href="#store">Store</a></li>
+                    <li><a href="#contact">Contact Us</a></li> 
+                    <li><a href="#store">Store</a></li>
                     <li><a href="#donate">Donate</a></li>
                 </ul>
             </nav>
@@ -390,7 +391,7 @@
             <div class="mission-grid">
                 
                 <div class="mission-image">
-                    <img src="./ChatGPT%20Image%20Oct%207,%202025,%2001_22_32%20AM.png" alt="Lark & Lavender Toddler Room, showing a bright, organized, and elegant learning environment." style="max-width: 70%;" >
+                    <img src="./about.png" alt="Lark & Lavender Toddler Room, showing a bright, organized, and elegant learning environment." style="max-width: 70%;" >
                 </div>
                 
                 <div class="mission-statement">
@@ -445,7 +446,7 @@
                         <td>After-School Enrichment</td>
                         <td>School-Age</td>
                         <td>Part-Time</td>
-                        <td>$225.00</td>
+                        <td>$245.00</td>
                     </tr>
                 </tbody>
             </table>
@@ -459,7 +460,7 @@
             <p style="text-align: center;">Elevate your child's celebration with our elegant, themed, and stress-free packages.</p>
             
             <div class="party-image-banner">
-                <img src="./ChatGPT%20Image%20Oct%201,%202025,%2004_10_54%20AM.png" alt="Troop Beverly Hills themed sleepover party with teepee tents and badge-making station." >
+                <img src="./parties.png" alt="Troop Beverly Hills themed sleepover party with teepee tents and badge-making station." >
             </div>
 
             <div class="party-packages">
