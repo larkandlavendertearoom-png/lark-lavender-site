@@ -82,21 +82,24 @@
             background-color: var(--primary-color);
         }
 
-        /* Hero Section */
+        /* Hero Section - UPDATED WITH IMAGE */
         .hero {
-            background: url('placeholder-tea-party-bg.jpg') no-repeat center center/cover; /* Replace with your image URL */
-            background-color: var(--primary-color);
+            /* Using the Office/Lobby image for the background */
+            background: linear-gradient(rgba(106, 5, 173, 0.4), rgba(106, 5, 173, 0.4)), 
+                        url('ChatGPT Image Oct 7, 2025, 01_22_18 AM.png') no-repeat center center/cover;
             color: var(--light-text);
             text-align: center;
-            padding: 100px 5%;
+            padding: 120px 5%;
+            text-shadow: 1px 1px 2px #000;
         }
         .hero h2 {
             font-family: var(--font-header);
-            font-size: 3em;
+            font-size: 3.5em; /* Slightly larger text for impact */
             margin-bottom: 10px;
+            color: var(--light-text);
         }
         .hero p {
-            font-size: 1.2em;
+            font-size: 1.4em;
             margin-bottom: 30px;
         }
 
@@ -123,15 +126,27 @@
             font-size: 1.5em;
         }
 
-        /* About/Mission Specific */
+        /* About/Mission Specific - UPDATED WITH IMAGE */
         .mission-grid {
             display: flex;
             flex-wrap: wrap;
-            gap: 20px;
+            gap: 40px; /* Increased gap */
+            align-items: flex-start; /* Align content to the top */
         }
         .mission-statement, .values-list {
             flex: 1;
             min-width: 300px;
+        }
+        .mission-image {
+            flex-basis: 100%; /* Image takes full width on small screens */
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .mission-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
         .values-list ul {
             list-style: none;
@@ -173,12 +188,26 @@
             color: #777;
         }
 
-        /* Party Packages Specific */
+        /* Party Packages Specific - UPDATED WITH IMAGE */
+        .party-packages-container {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+        .party-image-banner {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .party-image-banner img {
+            max-width: 80%; /* Smaller than 100% to keep focus */
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
         .party-packages {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
-            margin-top: 40px;
         }
         .package-card {
             background-color: #fff;
@@ -310,9 +339,12 @@
             .mission-grid {
                 flex-direction: column;
             }
+            .party-image-banner img {
+                max-width: 100%;
+            }
         }
     </style>
-    </head>
+</head>
 <body>
 
     <header>
@@ -344,6 +376,11 @@
         <section id="about" class="section">
             <h2>Our Mission & The 4L Curriculum™</h2>
             <div class="mission-grid">
+                
+                <div class="mission-image">
+                    <img src="ChatGPT Image Oct 7, 2025, 01_22_32 AM.png" alt="Lark & Lavender Toddler Room, showing a bright, organized, and elegant learning environment." style="max-width: 70%;" >
+                </div>
+                
                 <div class="mission-statement">
                     <h3>Our Purpose</h3>
                     <p>We strive to be more than just a daycare; we are an essential partner for parents working non-traditional hours, ensuring their child receives the same level of **safety, stimulation, and care** regardless of the clock.</p>
@@ -408,6 +445,10 @@
         <section id="parties" class="section">
             <h2>Luxe Weekend Party Enrichment Packages</h2>
             <p style="text-align: center;">Elevate your child's celebration with our elegant, themed, and stress-free packages.</p>
+            
+            <div class="party-image-banner">
+                <img src="ChatGPT Image Oct 1, 2025, 04_10_54 AM.png" alt="Troop Beverly Hills themed sleepover party with teepee tents and badge-making station." >
+            </div>
 
             <div class="party-packages">
                 
