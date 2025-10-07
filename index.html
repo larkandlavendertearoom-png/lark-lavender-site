@@ -81,12 +81,25 @@
         .cta-button:hover {
             background-color: var(--primary-color);
         }
+        /* Style for the large button in the Hero section */
+        .hero .cta-button {
+            padding: 15px 30px; 
+            font-size: 1.2em;
+            border: 2px solid var(--light-text);
+            background-color: var(--accent-color);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+        .hero .cta-button:hover {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
 
-        /* Hero Section - UPDATED WITH IMAGE */
+
+        /* Hero Section - IMAGE URL FIXED FOR SPACES */
         .hero {
-            /* Using the Office/Lobby image for the background */
+            /* Using the Office/Lobby image for the background - Note the %20 for spaces */
             background: linear-gradient(rgba(106, 5, 173, 0.4), rgba(106, 5, 173, 0.4)), 
-                        url('ChatGPT Image Oct 7, 2025, 01_22_18 AM.png') no-repeat center center/cover;
+                        url('ChatGPT%20Image%20Oct%207,%202025,%2001_22_18%20AM.png') no-repeat center center/cover;
             color: var(--light-text);
             text-align: center;
             padding: 120px 5%;
@@ -126,7 +139,7 @@
             font-size: 1.5em;
         }
 
-        /* About/Mission Specific - UPDATED WITH IMAGE */
+        /* About/Mission Specific - IMAGE URL FIXED FOR SPACES */
         .mission-grid {
             display: flex;
             flex-wrap: wrap;
@@ -143,7 +156,7 @@
             margin-bottom: 20px;
         }
         .mission-image img {
-            max-width: 100%;
+            max-width: 70%; /* Fixed to 70% as requested */
             height: auto;
             border-radius: 8px;
             box-shadow: 0 4px 10px rgba(0,0,0,0.1);
@@ -188,7 +201,7 @@
             color: #777;
         }
 
-        /* Party Packages Specific - UPDATED WITH IMAGE */
+        /* Party Packages Specific - IMAGE URL FIXED FOR SPACES */
         .party-packages-container {
             display: flex;
             flex-direction: column;
@@ -370,7 +383,7 @@
         <section id="home" class="hero">
             <h2>Luxury Care & Play-Based Learning</h2>
             <p>A safe haven where every child's potential can bloom, accommodating the schedules of hardworking families.</p>
-            <a href="#tuition" class="cta-button">View Rates</a>
+            <a href="#contact" class="cta-button">Book a Tour / Contact Us</a> 
         </section>
 
         <section id="about" class="section">
@@ -378,7 +391,7 @@
             <div class="mission-grid">
                 
                 <div class="mission-image">
-                    <img src="ChatGPT Image Oct 7, 2025, 01_22_32 AM.png" alt="Lark & Lavender Toddler Room, showing a bright, organized, and elegant learning environment." style="max-width: 70%;" >
+                    <img src="ChatGPT%20Image%20Oct%207,%202025,%2001_22_32%20AM.png" alt="Lark & Lavender Toddler Room, showing a bright, organized, and elegant learning environment." style="max-width: 70%;" >
                 </div>
                 
                 <div class="mission-statement">
@@ -447,7 +460,7 @@
             <p style="text-align: center;">Elevate your child's celebration with our elegant, themed, and stress-free packages.</p>
             
             <div class="party-image-banner">
-                <img src="ChatGPT Image Oct 1, 2025, 04_10_54 AM.png" alt="Troop Beverly Hills themed sleepover party with teepee tents and badge-making station." >
+                <img src="ChatGPT%20Image%20Oct%201,%202025,%2004_10_54%20AM.png" alt="Troop Beverly Hills themed sleepover party with teepee tents and badge-making station." >
             </div>
 
             <div class="party-packages">
