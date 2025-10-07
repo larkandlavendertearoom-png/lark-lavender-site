@@ -1,0 +1,222 @@
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+    // Configure Tailwind for Inter font and theme colors
+    tailwind.config = {
+        theme: {
+            extend: {
+                colors: {
+                    'lavender-light': '#F3F4FB',
+                    'lavender-main': '#6B60A3',
+                    'lark-teal': '#58A7A7',
+                    'accent-gold': '#FFC300',
+                },
+                fontFamily: {
+                    sans: ['Inter', 'sans-serif'],
+                },
+            }
+        }
+    }
+</script>
+
+<style>
+    /* Custom style for the background texture or a soft gradient */
+    body {
+        background-color: #f7f7f9;
+    }
+    .hero-bg {
+        background: linear-gradient(180deg, rgba(243, 244, 251, 1) 0%, rgba(255, 255, 255, 1) 100%);
+    }
+</style>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Lark & Lavender Enrichment Center</title>
+
+<body class="font-sans text-gray-800">
+
+    <!-- Header & Navigation -->
+    <header class="shadow-sm bg-white sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto p-4 flex justify-between items-center">
+            <h1 class="text-2xl font-bold text-lavender-main tracking-tight">
+                Lark & Lavender
+            </h1>
+            <a href="#enroll" class="bg-lark-teal text-white px-4 py-2 rounded-lg hover:bg-lark-teal/90 transition duration-300 shadow-md text-sm font-semibold">
+                Inquire Now
+            </a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-bg py-16 sm:py-24">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <p class="text-lavender-main text-lg sm:text-xl font-semibold mb-3">
+                "Where Luxury Meets Learning"
+            </p>
+            <h2 class="text-4xl sm:text-6xl font-extrabold text-gray-900 mb-6 leading-tight">
+                High-Quality Childcare for Your Non-Traditional Schedule
+            </h2>
+            <p class="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
+                Serving working families in Albany/Schenectady with licensed care from **7 AM to 12 AM (Mon–Fri)** and specialized weekend packages.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
+                <a href="#hours" class="bg-lavender-main text-white px-8 py-3 rounded-xl hover:bg-lavender-main/90 transition duration-300 shadow-lg font-bold">
+                    View Our Extended Hours
+                </a>
+                <a href="#about" class="bg-white text-lavender-main border-2 border-lavender-main px-8 py-3 rounded-xl hover:bg-gray-50 transition duration-300 font-bold shadow-lg">
+                    Discover The 4L Curriculum
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section: The 4L Curriculum -->
+    <section id="about" class="py-16 bg-white">
+        <div class="max-w-6xl mx-auto px-4">
+            <h3 class="text-3xl font-bold text-center text-gray-900 mb-12">
+                Our Mission: The 4L Curriculum™
+            </h3>
+            <div class="grid md:grid-cols-4 gap-8">
+                <!-- Luxury -->
+                <div class="p-6 rounded-xl border border-lavender-light shadow-md hover:shadow-lg transition duration-300 text-center">
+                    <span class="text-4xl text-lark-teal mb-3 block">✨</span>
+                    <h4 class="text-xl font-semibold text-lavender-main mb-2">Luxury</h4>
+                    <p class="text-sm text-gray-600">Calm, inviting classrooms that reflect comfort, respect, and a premium learning environment.</p>
+                </div>
+                <!-- Learning -->
+                <div class="p-6 rounded-xl border border-lavender-light shadow-md hover:shadow-lg transition duration-300 text-center">
+                    <span class="text-4xl text-lark-teal mb-3 block">📚</span>
+                    <h4 class="text-xl font-semibold text-lavender-main mb-2">Learning</h4>
+                    <p class="text-sm text-gray-600">Play-based academic foundations fostering curiosity and preparing children for lifelong success.</p>
+                </div>
+                <!-- Love -->
+                <div class="p-6 rounded-xl border border-lavender-light shadow-md hover:shadow-lg transition duration-300 text-center">
+                    <span class="text-4xl text-lark-teal mb-3 block">💖</span>
+                    <h4 class="text-xl font-semibold text-lavender-main mb-2">Love</h4>
+                    <p class="text-sm text-gray-600">Nurturing emotional wellness, building resilience, and cultivating a true sense of belonging.</p>
+                </div>
+                <!-- Legacy -->
+                <div class="p-6 rounded-xl border border-lavender-light shadow-md hover:shadow-lg transition duration-300 text-center">
+                    <span class="text-4xl text-lark-teal mb-3 block">👑</span>
+                    <h4 class="text-xl font-semibold text-lavender-main mb-2">Legacy</h4>
+                    <p class="text-sm text-gray-600">Cultural pride, confidence building, and advanced creativity for a strong future identity.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hours and Location Section -->
+    <section id="hours" class="py-16 bg-lavender-light">
+        <div class="max-w-6xl mx-auto px-4 grid md:grid-cols-2 gap-12 items-center">
+            <div>
+                <h3 class="text-3xl font-bold text-gray-900 mb-4">
+                    Hours Designed for Working Parents
+                </h3>
+                <p class="text-gray-700 mb-6 text-lg">
+                    We fill the market gap by providing essential care when other centers are closed. We also proudly accept **CCDF** subsidies to make high-quality care affordable.
+                </p>
+
+                <div class="bg-white p-6 rounded-xl shadow-lg border-t-4 border-lark-teal">
+                    <div class="flex justify-between items-center border-b pb-3 mb-3">
+                        <span class="font-semibold text-lg text-lavender-main">Mon – Fri Care</span>
+                        <span class="font-bold text-lark-teal text-xl">7:00 AM – 12:00 AM</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="font-semibold text-lg text-lavender-main">Weekend Packages</span>
+                        <span class="font-bold text-lark-teal text-xl">12:00 PM – 6:00 PM</span>
+                    </div>
+                </div>
+
+                <div class="mt-6">
+                    <p class="text-sm text-gray-500">
+                        **Ages Served:** Infants (4), Toddlers (3), Preschool (8), After-School (10). Limited spots available.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Location/Contact Card -->
+            <div class="p-8 bg-white rounded-xl shadow-2xl">
+                <h4 class="text-2xl font-bold text-lavender-main mb-4">
+                    Visit Our Phase 1 Location
+                </h4>
+                <p class="text-gray-700 mb-4 font-medium">
+                    1650 State Street, Schenectady NY
+                </p>
+                <div class="space-y-3">
+                    <div class="flex items-center">
+                        <span class="text-lark-teal mr-3">📞</span>
+                        <span class="text-gray-700">919-437-3995</span>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="text-lark-teal mr-3">📧</span>
+                        <span class="text-gray-700">larkandlavendertearoom@gmail.com</span>
+                    </div>
+                </div>
+                <button onclick="document.getElementById('enroll').scrollIntoView({ behavior: 'smooth' });" class="mt-6 w-full bg-accent-gold text-gray-900 px-6 py-3 rounded-xl font-bold hover:bg-accent-gold/90 transition duration-300">
+                    Secure Your Spot
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enrollment Form (Simple Inquiry) -->
+    <section id="enroll" class="py-16 bg-white">
+        <div class="max-w-3xl mx-auto px-4">
+            <h3 class="text-3xl font-bold text-center text-gray-900 mb-4">
+                Start Your Enrollment Inquiry
+            </h3>
+            <p class="text-center text-gray-600 mb-8">
+                Spaces for our Infants and Toddlers programs are highly limited. Complete the form below and we will contact you within 24 hours.
+            </p>
+
+            <!-- A simple form structure. Note: For a live site, you must connect this form's 'action' to a form service like Formspree or Google Forms. -->
+            <form action="#" method="POST" class="space-y-6 bg-lavender-light p-8 rounded-xl shadow-inner">
+                <div>
+                    <label for="parent_name" class="block text-sm font-medium text-gray-700">Parent Name(s)</label>
+                    <input type="text" name="parent_name" id="parent_name" required class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-3 focus:ring-lark-teal focus:border-lark-teal">
+                </div>
+                <div>
+                    <label for="email" class="block text-sm font-medium text-gray-700">Email Address</label>
+                    <input type="email" name="email" id="email" required class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-3 focus:ring-lark-teal focus:border-lark-teal">
+                </div>
+                <div>
+                    <label for="phone" class="block text-sm font-medium text-gray-700">Phone Number</label>
+                    <input type="tel" name="phone" id="phone" required class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-3 focus:ring-lark-teal focus:border-lark-teal">
+                </div>
+                <div>
+                    <label for="child_age" class="block text-sm font-medium text-gray-700">Child's Age Group</label>
+                    <select id="child_age" name="child_age" required class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-3 focus:ring-lark-teal focus:border-lark-teal">
+                        <option value="">-- Select Age Group --</option>
+                        <option value="Infant">Infant (Under 1)</option>
+                        <option value="Toddler">Toddler (1-2 yrs)</option>
+                        <option value="Preschool">Preschool (3-4 yrs)</option>
+                        <option value="AfterSchool">After-School (5+ yrs)</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="needs" class="block text-sm font-medium text-gray-700">Your Primary Care Need</label>
+                    <select id="needs" name="needs" required class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-3 focus:ring-lark-teal focus:border-lark-teal">
+                        <option value="">-- Select Care Need --</option>
+                        <option value="Daytime">Standard Day Program (7 AM - 5 PM)</option>
+                        <option value="Extended">Extended Evening Care (After 5 PM)</option>
+                        <option value="Weekend">Weekend Luxe Party Packages</option>
+                    </select>
+                </div>
+                <button type="submit" class="w-full flex justify-center py-3 px-4 border border-transparent rounded-xl shadow-xl text-lg font-bold text-white bg-lavender-main hover:bg-lavender-main/80 transition duration-300">
+                    Submit Enrollment Interest
+                </button>
+            </form>
+            <p class="mt-4 text-center text-xs text-gray-400">
+                *Submitting this form does not guarantee enrollment. We will contact you regarding availability.
+            </p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="max-w-6xl mx-auto px-4 text-center text-sm">
+            <p class="mb-2">&copy; 2025 Lark & Lavender Enrichment Center. All rights reserved.</p>
+            <p>Prepared by Kishami & Byron Jackson. Veteran-Led. Schenectady, NY.</p>
+        </div>
+    </footer>
+
+</body>
