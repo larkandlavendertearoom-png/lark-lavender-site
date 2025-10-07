@@ -95,11 +95,11 @@
         }
 
 
-        /* Hero Section - IMAGE URL FIXED FOR SPACES */
+        /* Hero Section - IMAGE URL FIXED: ADDED ./ for relative path */
         .hero {
-            /* Using the Office/Lobby image for the background - Note the %20 for spaces */
+            /* Using the Office/Lobby image for the background - Note the %20 for spaces and the ./ */
             background: linear-gradient(rgba(106, 5, 173, 0.4), rgba(106, 5, 173, 0.4)), 
-                        url('ChatGPT%20Image%20Oct%207,%202025,%2001_22_18%20AM.png') no-repeat center center/cover;
+                        url('./ChatGPT%20Image%20Oct%207,%202025,%2001_22_18%20AM.png') no-repeat center center/cover;
             color: var(--light-text);
             text-align: center;
             padding: 120px 5%;
@@ -139,7 +139,7 @@
             font-size: 1.5em;
         }
 
-        /* About/Mission Specific - IMAGE URL FIXED FOR SPACES */
+        /* About/Mission Specific - IMAGE PATH FIXED: ADDED ./ for relative path */
         .mission-grid {
             display: flex;
             flex-wrap: wrap;
@@ -201,7 +201,7 @@
             color: #777;
         }
 
-        /* Party Packages Specific - IMAGE URL FIXED FOR SPACES */
+        /* Party Packages Specific - IMAGE PATH FIXED */
         .party-packages-container {
             display: flex;
             flex-direction: column;
@@ -291,7 +291,6 @@
             border-radius: 5px;
         }
         .contact-form button {
-            display: block;
             width: 100%;
             margin-top: 20px;
             padding: 15px;
@@ -371,7 +370,7 @@
                     <li><a href="#about">About Us</a></li>
                     <li><a href="#tuition">Tuition</a></li>
                     <li><a href="#parties">Parties</a></li>
-                    <li><a href="#store">Store</a></li>
+                    <li><a href="#contact">Contact Us</a></li> <li><a href="#store">Store</a></li>
                     <li><a href="#donate">Donate</a></li>
                 </ul>
             </nav>
@@ -391,7 +390,7 @@
             <div class="mission-grid">
                 
                 <div class="mission-image">
-                    <img src="ChatGPT%20Image%20Oct%207,%202025,%2001_22_32%20AM.png" alt="Lark & Lavender Toddler Room, showing a bright, organized, and elegant learning environment." style="max-width: 70%;" >
+                    <img src="./ChatGPT%20Image%20Oct%207,%202025,%2001_22_32%20AM.png" alt="Lark & Lavender Toddler Room, showing a bright, organized, and elegant learning environment." style="max-width: 70%;" >
                 </div>
                 
                 <div class="mission-statement">
@@ -460,7 +459,7 @@
             <p style="text-align: center;">Elevate your child's celebration with our elegant, themed, and stress-free packages.</p>
             
             <div class="party-image-banner">
-                <img src="ChatGPT%20Image%20Oct%201,%202025,%2004_10_54%20AM.png" alt="Troop Beverly Hills themed sleepover party with teepee tents and badge-making station." >
+                <img src="./ChatGPT%20Image%20Oct%201,%202025,%2004_10_54%20AM.png" alt="Troop Beverly Hills themed sleepover party with teepee tents and badge-making station." >
             </div>
 
             <div class="party-packages">
@@ -510,24 +509,6 @@
             </div>
         </section>
 
-        <section id="store" class="section">
-            <h2>Lark & Lavender Store</h2>
-            <div class="store-donate-content">
-                <p>Shop our curated collection of luxury party supplies, enrichment kits, and beautiful items perfect for gifting or bringing the Lark & Lavender experience home.</p>
-                <p>*(Products, images, and prices coming soon!)*</p>
-                <a href="#contact" class="cta-button">Contact for Pre-Orders</a>
-            </div>
-        </section>
-
-        <section id="donate" class="section">
-            <h2>Support "Tea Party with a Purpose" Foundation</h2>
-            <div class="store-donate-content">
-                <p>We are proud to support **Teaparty with a Purpose Foundation**, a non-profit dedicated to enriching the lives of children in our community.</p>
-                <p>Your generous donation helps provide access to quality enrichment programs and joyful experiences for families in need.</p>
-                <a href="#" class="cta-button" style="background-color: #F67280;">Donate Now</a>
-            </div>
-        </section>
-
         <section id="contact" class="section">
             <h2>Contact Us & Inquire Now</h2>
             <p style="text-align: center;">Ready for enrollment or to book a party? Send us a message!</p>
@@ -557,6 +538,25 @@
             </div>
             <p style="text-align: center; margin-top: 20px;">**Phone:** (555) 555-5555 | **Email:** info@larkandlavender.com</p>
         </section>
+        
+        <section id="store" class="section">
+            <h2>Lark & Lavender Store</h2>
+            <div class="store-donate-content">
+                <p>Shop our curated collection of luxury party supplies, enrichment kits, and beautiful items perfect for gifting or bringing the Lark & Lavender experience home.</p>
+                <p>*(Products, images, and prices coming soon!)*</p>
+                <a href="#contact" class="cta-button">Contact for Pre-Orders</a>
+            </div>
+        </section>
+
+        <section id="donate" class="section">
+            <h2>Support "Tea Party with a Purpose" Foundation</h2>
+            <div class="store-donate-content">
+                <p>We are proud to support **Teaparty with a Purpose Foundation**, a non-profit dedicated to enriching the lives of children in our community.</p>
+                <p>Your generous donation helps provide access to quality enrichment programs and joyful experiences for families in need.</p>
+                <a href="#" class="cta-button" style="background-color: #F67280;">Donate Now</a>
+            </div>
+        </section>
+        
     </main>
 
     <footer>
