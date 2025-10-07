@@ -1,222 +1,519 @@
-<script src="https://cdn.tailwindcss.com"></script>
-<script>
-    // Configure Tailwind for Inter font and theme colors
-    tailwind.config = {
-        theme: {
-            extend: {
-                colors: {
-                    'lavender-light': '#F3F4FB',
-                    'lavender-main': '#6B60A3',
-                    'lark-teal': '#58A7A7',
-                    'accent-gold': '#FFC300',
-                },
-                fontFamily: {
-                    sans: ['Inter', 'sans-serif'],
-                },
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lark & Lavender Enrichment Center</title>
+    <style>
+        /* Basic Reset and Variables */
+        :root {
+            --primary-color: #A3A3C7; /* Lavender */
+            --secondary-color: #E6E6FA; /* Light Lavender/Thistle */
+            --accent-color: #6A05AD; /* Deep Purple */
+            --text-color: #333;
+            --light-text: #fff;
+            --font-main: 'Garamond', serif;
+            --font-header: 'Playfair Display', serif; /* Use a more elegant font if possible */
+        }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: var(--font-main);
+            color: var(--text-color);
+            line-height: 1.6;
+            background-color: #fff;
+            scroll-behavior: smooth;
+        }
+
+        /* Header and Navigation */
+        header {
+            background-color: var(--secondary-color);
+            padding: 15px 5%;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .logo h1 {
+            font-family: var(--font-header);
+            font-size: 1.8em;
+            color: var(--accent-color);
+            white-space: nowrap;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+        }
+        nav ul li {
+            margin-left: 25px;
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: bold;
+            padding: 5px 0;
+            transition: color 0.3s;
+        }
+        nav ul li a:hover {
+            color: var(--accent-color);
+            border-bottom: 2px solid var(--accent-color);
+        }
+        .cta-button {
+            background-color: var(--accent-color);
+            color: var(--light-text);
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s;
+            margin-left: 20px;
+        }
+        .cta-button:hover {
+            background-color: var(--primary-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: url('placeholder-tea-party-bg.jpg') no-repeat center center/cover; /* Replace with your image URL */
+            background-color: var(--primary-color);
+            color: var(--light-text);
+            text-align: center;
+            padding: 100px 5%;
+        }
+        .hero h2 {
+            font-family: var(--font-header);
+            font-size: 3em;
+            margin-bottom: 10px;
+        }
+        .hero p {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+        }
+
+        /* Main Content Sections */
+        .section {
+            padding: 60px 5%;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .section:nth-child(even) {
+            background-color: var(--secondary-color);
+        }
+        h2 {
+            font-family: var(--font-header);
+            text-align: center;
+            font-size: 2.5em;
+            color: var(--accent-color);
+            margin-bottom: 40px;
+        }
+        h3 {
+            color: var(--accent-color);
+            margin-top: 15px;
+            margin-bottom: 10px;
+            font-size: 1.5em;
+        }
+
+        /* About/Mission Specific */
+        .mission-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .mission-statement, .values-list {
+            flex: 1;
+            min-width: 300px;
+        }
+        .values-list ul {
+            list-style: none;
+        }
+        .values-list li {
+            background-color: #fff;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-left: 5px solid var(--primary-color);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        .values-list strong {
+            color: var(--accent-color);
+        }
+
+        /* Tuition Specific */
+        .tuition-table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            margin-top: 20px;
+        }
+        .tuition-table th, .tuition-table td {
+            padding: 15px;
+            border-bottom: 1px solid #ddd;
+        }
+        .tuition-table th {
+            background-color: var(--primary-color);
+            color: var(--light-text);
+            font-weight: bold;
+        }
+        .tuition-table tr:hover {
+            background-color: var(--secondary-color);
+        }
+        .note {
+            text-align: center;
+            margin-top: 20px;
+            font-style: italic;
+            color: #777;
+        }
+
+        /* Party Packages Specific */
+        .party-packages {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        .package-card {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-top: 5px solid var(--accent-color);
+            transition: transform 0.3s;
+        }
+        .package-card:hover {
+            transform: translateY(-5px);
+        }
+        .package-card h3 {
+            color: var(--accent-color);
+            font-size: 1.8em;
+            font-family: var(--font-header);
+            text-align: center;
+        }
+        .package-card .price {
+            font-size: 2em;
+            font-weight: bold;
+            color: var(--primary-color);
+            text-align: center;
+            margin: 10px 0 20px;
+        }
+        .package-card ul {
+            list-style: none;
+        }
+        .package-card li {
+            padding: 8px 0;
+            border-bottom: 1px dotted var(--secondary-color);
+            display: flex;
+            align-items: center;
+        }
+        .package-card li::before {
+            content: '✓';
+            color: var(--accent-color);
+            margin-right: 10px;
+            font-weight: bold;
+        }
+        
+        /* Store & Donate Specific */
+        .store-donate-content p, .contact-content p {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        /* Contact Section */
+        #contact .section {
+            background-color: var(--secondary-color);
+        }
+        .contact-form-container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .contact-form label {
+            display: block;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .contact-form button {
+            display: block;
+            width: 100%;
+            margin-top: 20px;
+            padding: 15px;
+            background-color: var(--accent-color);
+            color: var(--light-text);
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .contact-form button:hover {
+            background-color: var(--primary-color);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--accent-color);
+            color: var(--light-text);
+            text-align: center;
+            padding: 30px 5%;
+            margin-top: 40px;
+        }
+        .social-links a {
+            color: var(--light-text);
+            margin: 0 10px;
+            font-size: 1.5em;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .social-links a:hover {
+            color: var(--secondary-color);
+        }
+        footer p {
+            margin-top: 15px;
+            font-size: 0.9em;
+        }
+
+        /* Media Queries for Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+            }
+            .logo h1 {
+                margin-bottom: 10px;
+            }
+            nav ul {
+                flex-direction: column;
+                text-align: center;
+                width: 100%;
+            }
+            nav ul li {
+                margin: 5px 0;
+            }
+            .hero h2 {
+                font-size: 2.5em;
+            }
+            .mission-grid {
+                flex-direction: column;
             }
         }
-    }
-</script>
+    </style>
+    </head>
+<body>
 
-<style>
-    /* Custom style for the background texture or a soft gradient */
-    body {
-        background-color: #f7f7f9;
-    }
-    .hero-bg {
-        background: linear-gradient(180deg, rgba(243, 244, 251, 1) 0%, rgba(255, 255, 255, 1) 100%);
-    }
-</style>
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Lark & Lavender Enrichment Center</title>
-
-<body class="font-sans text-gray-800">
-
-    <!-- Header & Navigation -->
-    <header class="shadow-sm bg-white sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto p-4 flex justify-between items-center">
-            <h1 class="text-2xl font-bold text-lavender-main tracking-tight">
-                Lark & Lavender
-            </h1>
-            <a href="#enroll" class="bg-lark-teal text-white px-4 py-2 rounded-lg hover:bg-lark-teal/90 transition duration-300 shadow-md text-sm font-semibold">
-                Inquire Now
-            </a>
+    <header>
+        <div class="nav-container">
+            <div class="logo">
+                <h1>Lark & Lavender Enrichment Center</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#tuition">Tuition</a></li>
+                    <li><a href="#parties">Parties</a></li>
+                    <li><a href="#store">Store</a></li>
+                    <li><a href="#donate">Donate</a></li>
+                </ul>
+            </nav>
+            <a href="#contact" class="cta-button">Inquire Now</a>
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero-bg py-16 sm:py-24">
-        <div class="max-w-4xl mx-auto px-4 text-center">
-            <p class="text-lavender-main text-lg sm:text-xl font-semibold mb-3">
-                "Where Luxury Meets Learning"
-            </p>
-            <h2 class="text-4xl sm:text-6xl font-extrabold text-gray-900 mb-6 leading-tight">
-                High-Quality Childcare for Your Non-Traditional Schedule
-            </h2>
-            <p class="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
-                Serving working families in Albany/Schenectady with licensed care from **7 AM to 12 AM (Mon–Fri)** and specialized weekend packages.
-            </p>
-            <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
-                <a href="#hours" class="bg-lavender-main text-white px-8 py-3 rounded-xl hover:bg-lavender-main/90 transition duration-300 shadow-lg font-bold">
-                    View Our Extended Hours
-                </a>
-                <a href="#about" class="bg-white text-lavender-main border-2 border-lavender-main px-8 py-3 rounded-xl hover:bg-gray-50 transition duration-300 font-bold shadow-lg">
-                    Discover The 4L Curriculum
-                </a>
-            </div>
-        </div>
-    </section>
+    <main>
+        <section id="home" class="hero">
+            <h2>Luxury Care & Play-Based Learning</h2>
+            <p>A safe haven where every child's potential can bloom, accommodating the schedules of hardworking families.</p>
+            <a href="#tuition" class="cta-button">View Rates</a>
+        </section>
 
-    <!-- About Section: The 4L Curriculum -->
-    <section id="about" class="py-16 bg-white">
-        <div class="max-w-6xl mx-auto px-4">
-            <h3 class="text-3xl font-bold text-center text-gray-900 mb-12">
-                Our Mission: The 4L Curriculum™
-            </h3>
-            <div class="grid md:grid-cols-4 gap-8">
-                <!-- Luxury -->
-                <div class="p-6 rounded-xl border border-lavender-light shadow-md hover:shadow-lg transition duration-300 text-center">
-                    <span class="text-4xl text-lark-teal mb-3 block">✨</span>
-                    <h4 class="text-xl font-semibold text-lavender-main mb-2">Luxury</h4>
-                    <p class="text-sm text-gray-600">Calm, inviting classrooms that reflect comfort, respect, and a premium learning environment.</p>
+        <section id="about" class="section">
+            <h2>Our Mission & The 4L Curriculum™</h2>
+            <div class="mission-grid">
+                <div class="mission-statement">
+                    <h3>Our Purpose</h3>
+                    <p>We strive to be more than just a daycare; we are an essential partner for parents working non-traditional hours, ensuring their child receives the same level of **safety, stimulation, and care** regardless of the clock.</p>
+                    <p>The Lark and Lavender Enrichment Center is dedicated to providing high-quality, comprehensive childcare and enrichment that supports the unique needs of modern, working families.</p>
                 </div>
-                <!-- Learning -->
-                <div class="p-6 rounded-xl border border-lavender-light shadow-md hover:shadow-lg transition duration-300 text-center">
-                    <span class="text-4xl text-lark-teal mb-3 block">📚</span>
-                    <h4 class="text-xl font-semibold text-lavender-main mb-2">Learning</h4>
-                    <p class="text-sm text-gray-600">Play-based academic foundations fostering curiosity and preparing children for lifelong success.</p>
-                </div>
-                <!-- Love -->
-                <div class="p-6 rounded-xl border border-lavender-light shadow-md hover:shadow-lg transition duration-300 text-center">
-                    <span class="text-4xl text-lark-teal mb-3 block">💖</span>
-                    <h4 class="text-xl font-semibold text-lavender-main mb-2">Love</h4>
-                    <p class="text-sm text-gray-600">Nurturing emotional wellness, building resilience, and cultivating a true sense of belonging.</p>
-                </div>
-                <!-- Legacy -->
-                <div class="p-6 rounded-xl border border-lavender-light shadow-md hover:shadow-lg transition duration-300 text-center">
-                    <span class="text-4xl text-lark-teal mb-3 block">👑</span>
-                    <h4 class="text-xl font-semibold text-lavender-main mb-2">Legacy</h4>
-                    <p class="text-sm text-gray-600">Cultural pride, confidence building, and advanced creativity for a strong future identity.</p>
+                <div class="values-list">
+                    <h3>Our Core Values</h3>
+                    <p>We fulfill this mission by operating according to the **4L Curriculum™** framework:</p>
+                    <ul>
+                        <li><strong>Luxury:</strong> Cultivating a calm, inviting, and respectful environment where children and staff feel valued and thrive.</li>
+                        <li><strong>Learning:</strong> Fostering play-based, research-backed academic foundations that encourage curiosity and critical thinking.</li>
+                        <li><strong>Love:</strong> Prioritizing nurturing emotional wellness, social-emotional development, and a strong sense of belonging for every child.</li>
+                        <li><strong>Legacy:</strong> Instilling confidence, celebrating diversity, and building cultural pride, preparing students to be compassionate leaders.</li>
+                    </ul>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Hours and Location Section -->
-    <section id="hours" class="py-16 bg-lavender-light">
-        <div class="max-w-6xl mx-auto px-4 grid md:grid-cols-2 gap-12 items-center">
-            <div>
-                <h3 class="text-3xl font-bold text-gray-900 mb-4">
-                    Hours Designed for Working Parents
-                </h3>
-                <p class="text-gray-700 mb-6 text-lg">
-                    We fill the market gap by providing essential care when other centers are closed. We also proudly accept **CCDF** subsidies to make high-quality care affordable.
-                </p>
-
-                <div class="bg-white p-6 rounded-xl shadow-lg border-t-4 border-lark-teal">
-                    <div class="flex justify-between items-center border-b pb-3 mb-3">
-                        <span class="font-semibold text-lg text-lavender-main">Mon – Fri Care</span>
-                        <span class="font-bold text-lark-teal text-xl">7:00 AM – 12:00 AM</span>
-                    </div>
-                    <div class="flex justify-between items-center">
-                        <span class="font-semibold text-lg text-lavender-main">Weekend Packages</span>
-                        <span class="font-bold text-lark-teal text-xl">12:00 PM – 6:00 PM</span>
-                    </div>
-                </div>
-
-                <div class="mt-6">
-                    <p class="text-sm text-gray-500">
-                        **Ages Served:** Infants (4), Toddlers (3), Preschool (8), After-School (10). Limited spots available.
-                    </p>
-                </div>
+        <section id="tuition" class="section">
+            <h2>Weekly Tuition Rates</h2>
+            <table class="tuition-table">
+                <thead>
+                    <tr>
+                        <th>Program</th>
+                        <th>Age Group</th>
+                        <th>Schedule</th>
+                        <th>Weekly Rate</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Infant Care</td>
+                        <td>Infants</td>
+                        <td>Full-Time (7 AM – 5 PM)</td>
+                        <td>$400.00</td>
+                    </tr>
+                    <tr>
+                        <td>Toddler Care</td>
+                        <td>Toddlers</td>
+                        <td>Full-Time (7 AM – 5 PM)</td>
+                        <td>$375.00</td>
+                    </tr>
+                    <tr>
+                        <td>Preschool Program</td>
+                        <td>Pre-K</td>
+                        <td>Full-Time (7 AM – 5 PM)</td>
+                        <td>$350.00</td>
+                    </tr>
+                    <tr>
+                        <td>After-School Enrichment</td>
+                        <td>School-Age</td>
+                        <td>Part-Time</td>
+                        <td>$225.00</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="note">
+                <p>After-Hours Drop-Off Service (5 PM – 12 AM): $45 for two hours (Evening Service).</p>
             </div>
+        </section>
 
-            <!-- Location/Contact Card -->
-            <div class="p-8 bg-white rounded-xl shadow-2xl">
-                <h4 class="text-2xl font-bold text-lavender-main mb-4">
-                    Visit Our Phase 1 Location
-                </h4>
-                <p class="text-gray-700 mb-4 font-medium">
-                    1650 State Street, Schenectady NY
-                </p>
-                <div class="space-y-3">
-                    <div class="flex items-center">
-                        <span class="text-lark-teal mr-3">📞</span>
-                        <span class="text-gray-700">919-437-3995</span>
-                    </div>
-                    <div class="flex items-center">
-                        <span class="text-lark-teal mr-3">📧</span>
-                        <span class="text-gray-700">larkandlavendertearoom@gmail.com</span>
-                    </div>
+        <section id="parties" class="section">
+            <h2>Luxe Weekend Party Enrichment Packages</h2>
+            <p style="text-align: center;">Elevate your child's celebration with our elegant, themed, and stress-free packages.</p>
+
+            <div class="party-packages">
+                
+                <div class="package-card">
+                    <h3>The Glamping Gala</h3>
+                    <p class="price">$450.00</p>
+                    <p style="font-style: italic; margin-bottom: 15px;">**Right from Troop Beverly Hills!** A glamorous, nostalgic adventure where luxury meets outdoor fun.</p>
+                    <ul>
+                        <li>**4 Hours** of Supervised Fun (Full Shift)</li>
+                        <li>Up to **12 Children**</li>
+                        <li>Custom-Designed **Birthday Cake**</li>
+                        <li>Dedicated **Badge-Making Station** (Thematic Activity)</li>
+                        <li>**Full Meal Service**</li>
+                        <li>The Ultimate Indulgence: a complete, worry-free afternoon!</li>
+                    </ul>
                 </div>
-                <button onclick="document.getElementById('enroll').scrollIntoView({ behavior: 'smooth' });" class="mt-6 w-full bg-accent-gold text-gray-900 px-6 py-3 rounded-xl font-bold hover:bg-accent-gold/90 transition duration-300">
-                    Secure Your Spot
-                </button>
+
+                <div class="package-card">
+                    <h3>The Lilac Luxe</h3>
+                    <p class="price">Inquire for Pricing</p>
+                    <p style="font-style: italic; margin-bottom: 15px;">The perfect balance of elegance and fun for intimate celebrations.</p>
+                    <ul>
+                        <li>**3 Hours** of Supervised Fun</li>
+                        <li>Up to **10 Children**</li>
+                        <li>Basic Elegant Decorations</li>
+                        <li>Standard Snack & Juice Service</li>
+                        <li>Tailored to one of our classic sensory themes.</li>
+                        <li>Perfect for younger children.</li>
+                    </ul>
+                </div>
+
+                <div class="package-card">
+                    <h3>The Lavender Dream</h3>
+                    <p class="price">Inquire for Pricing</p>
+                    <p style="font-style: italic; margin-bottom: 15px;">The ultimate, extended package for a truly memorable celebration.</p>
+                    <ul>
+                        <li>**4 Hours** (Full Shift) of Supervised Fun</li>
+                        <li>Up to **12 Children**</li>
+                        <li>Custom Cake</li>
+                        <li>Specialized Thematic Activity</li>
+                        <li>Full Meal Service</li>
+                        <li>Transforms your celebration into a truly luxurious event.</li>
+                    </ul>
+                </div>
+
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Enrollment Form (Simple Inquiry) -->
-    <section id="enroll" class="py-16 bg-white">
-        <div class="max-w-3xl mx-auto px-4">
-            <h3 class="text-3xl font-bold text-center text-gray-900 mb-4">
-                Start Your Enrollment Inquiry
-            </h3>
-            <p class="text-center text-gray-600 mb-8">
-                Spaces for our Infants and Toddlers programs are highly limited. Complete the form below and we will contact you within 24 hours.
-            </p>
+        <section id="store" class="section">
+            <h2>Lark & Lavender Store</h2>
+            <div class="store-donate-content">
+                <p>Shop our curated collection of luxury party supplies, enrichment kits, and beautiful items perfect for gifting or bringing the Lark & Lavender experience home.</p>
+                <p>*(Products, images, and prices coming soon!)*</p>
+                <a href="#contact" class="cta-button">Contact for Pre-Orders</a>
+            </div>
+        </section>
 
-            <!-- A simple form structure. Note: For a live site, you must connect this form's 'action' to a form service like Formspree or Google Forms. -->
-            <form action="#" method="POST" class="space-y-6 bg-lavender-light p-8 rounded-xl shadow-inner">
-                <div>
-                    <label for="parent_name" class="block text-sm font-medium text-gray-700">Parent Name(s)</label>
-                    <input type="text" name="parent_name" id="parent_name" required class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-3 focus:ring-lark-teal focus:border-lark-teal">
-                </div>
-                <div>
-                    <label for="email" class="block text-sm font-medium text-gray-700">Email Address</label>
-                    <input type="email" name="email" id="email" required class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-3 focus:ring-lark-teal focus:border-lark-teal">
-                </div>
-                <div>
-                    <label for="phone" class="block text-sm font-medium text-gray-700">Phone Number</label>
-                    <input type="tel" name="phone" id="phone" required class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-3 focus:ring-lark-teal focus:border-lark-teal">
-                </div>
-                <div>
-                    <label for="child_age" class="block text-sm font-medium text-gray-700">Child's Age Group</label>
-                    <select id="child_age" name="child_age" required class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-3 focus:ring-lark-teal focus:border-lark-teal">
-                        <option value="">-- Select Age Group --</option>
-                        <option value="Infant">Infant (Under 1)</option>
-                        <option value="Toddler">Toddler (1-2 yrs)</option>
-                        <option value="Preschool">Preschool (3-4 yrs)</option>
-                        <option value="AfterSchool">After-School (5+ yrs)</option>
+        <section id="donate" class="section">
+            <h2>Support "Tea Party with a Purpose" Foundation</h2>
+            <div class="store-donate-content">
+                <p>We are proud to support **Teaparty with a Purpose Foundation**, a non-profit dedicated to enriching the lives of children in our community.</p>
+                <p>Your generous donation helps provide access to quality enrichment programs and joyful experiences for families in need.</p>
+                <a href="#" class="cta-button" style="background-color: #F67280;">Donate Now</a>
+            </div>
+        </section>
+
+        <section id="contact" class="section">
+            <h2>Contact Us & Inquire Now</h2>
+            <p style="text-align: center;">Ready for enrollment or to book a party? Send us a message!</p>
+            <div class="contact-form-container">
+                <form class="contact-form" action="YOUR_FORM_SUBMISSION_URL" method="POST">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                    
+                    <label for="phone">Phone:</label>
+                    <input type="tel" id="phone" name="phone">
+
+                    <label for="interest">Interested In:</label>
+                    <select id="interest" name="interest">
+                        <option value="enrollment">Daycare Enrollment</option>
+                        <option value="party">Party Package Booking</option>
+                        <option value="general">General Inquiry</option>
                     </select>
-                </div>
-                <div>
-                    <label for="needs" class="block text-sm font-medium text-gray-700">Your Primary Care Need</label>
-                    <select id="needs" name="needs" required class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-3 focus:ring-lark-teal focus:border-lark-teal">
-                        <option value="">-- Select Care Need --</option>
-                        <option value="Daytime">Standard Day Program (7 AM - 5 PM)</option>
-                        <option value="Extended">Extended Evening Care (After 5 PM)</option>
-                        <option value="Weekend">Weekend Luxe Party Packages</option>
-                    </select>
-                </div>
-                <button type="submit" class="w-full flex justify-center py-3 px-4 border border-transparent rounded-xl shadow-xl text-lg font-bold text-white bg-lavender-main hover:bg-lavender-main/80 transition duration-300">
-                    Submit Enrollment Interest
-                </button>
-            </form>
-            <p class="mt-4 text-center text-xs text-gray-400">
-                *Submitting this form does not guarantee enrollment. We will contact you regarding availability.
-            </p>
-        </div>
-    </section>
 
-    <!-- Footer -->
-    <footer class="bg-gray-800 text-white py-8">
-        <div class="max-w-6xl mx-auto px-4 text-center text-sm">
-            <p class="mb-2">&copy; 2025 Lark & Lavender Enrichment Center. All rights reserved.</p>
-            <p>Prepared by Kishami & Byron Jackson. Veteran-Led. Schenectady, NY.</p>
+                    <label for="message">Message:</label>
+                    <textarea id="message" name="message" rows="5" required></textarea>
+
+                    <button type="submit">Submit Inquiry</button>
+                </form>
+            </div>
+            <p style="text-align: center; margin-top: 20px;">**Phone:** (555) 555-5555 | **Email:** info@larkandlavender.com</p>
+        </section>
+    </main>
+
+    <footer>
+        <div class="social-links">
+            <a href="#" target="_blank">Facebook</a> |
+            <a href="#" target="_blank">Instagram</a> |
+            <a href="#" target="_blank">TikTok</a> |
+            <a href="#" target="_blank">Blog (Coming Soon)</a>
         </div>
+        <p>&copy; 2025 Lark and Lavender Enrichment Center. All Rights Reserved.</p>
     </footer>
 
 </body>
+</html>
