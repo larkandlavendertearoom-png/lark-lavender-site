@@ -1,574 +1,276 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lark & Lavender Enrichment Center</title>
-    <style>
-        /* Basic Reset and Variables */
-        :root {
-            --primary-color: #A3A3C7; /* Lavender */
-            --secondary-color: #E6E6FA; /* Light Lavender/Thistle */
-            --accent-color: #6A05AD; /* Deep Purple */
-            --text-color: #333;
-            --light-text: #fff;
-            --font-main: 'Garamond', serif;
-            --font-header: 'Playfair Display', serif; 
-        }
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-        body {
-            font-family: var(--font-main);
-            color: var(--text-color);
-            line-height: 1.6;
-            background-color: #fff;
-            scroll-behavior: smooth;
-        }
-
-        /* Header and Navigation */
-        header {
-            background-color: var(--secondary-color);
-            padding: 15px 5%;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-        .nav-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        .logo h1 {
-            font-family: var(--font-header);
-            font-size: 1.8em;
-            color: var(--accent-color);
-            white-space: nowrap;
-        }
-        nav ul {
-            list-style: none;
-            display: flex;
-        }
-        nav ul li {
-            margin-left: 25px;
-        }
-        nav ul li a {
-            text-decoration: none;
-            color: var(--text-color);
-            font-weight: bold;
-            padding: 5px 0;
-            transition: color 0.3s;
-        }
-        nav ul li a:hover {
-            color: var(--accent-color);
-            border-bottom: 2px solid var(--accent-color);
-        }
-        .cta-button {
-            background-color: var(--accent-color);
-            color: var(--light-text);
-            padding: 10px 20px;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: background-color 0.3s;
-            margin-left: 20px;
-        }
-        .cta-button:hover {
-            background-color: var(--primary-color);
-        }
-        /* Style for the large button in the Hero section */
-        .hero .cta-button {
-            padding: 15px 30px; 
-            font-size: 1.2em;
-            border: 2px solid var(--light-text);
-            background-color: var(--accent-color);
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-        }
-        .hero .cta-button:hover {
-            background-color: var(--primary-color);
-            border-color: var(--primary-color);
-        }
-
-
-        /* Hero Section - PATH UPDATED to simple file name */
-        .hero {
-            /* Using the hero.png image for the background */
-            background: linear-gradient(rgba(106, 5, 173, 0.4), rgba(106, 5, 173, 0.4)), 
-                        url('./hero.png') no-repeat center center/cover;
-            color: var(--light-text);
-            text-align: center;
-            padding: 120px 5%;
-            text-shadow: 1px 1px 2px #000;
-        }
-        .hero h2 {
-            font-family: var(--font-header);
-            font-size: 3.5em; 
-            margin-bottom: 10px;
-            color: var(--light-text);
-        }
-        .hero p {
-            font-size: 1.4em;
-            margin-bottom: 30px;
-        }
-
-        /* Main Content Sections */
-        .section {
-            padding: 60px 5%;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-        .section:nth-child(even) {
-            background-color: var(--secondary-color);
-        }
-        h2 {
-            font-family: var(--font-header);
-            text-align: center;
-            font-size: 2.5em;
-            color: var(--accent-color);
-            margin-bottom: 40px;
-        }
-        h3 {
-            color: var(--accent-color);
-            margin-top: 15px;
-            margin-bottom: 10px;
-            font-size: 1.5em;
-        }
-
-        /* About/Mission Specific - PATH UPDATED to simple file name */
-        .mission-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 40px; 
-            align-items: flex-start; 
-        }
-        .mission-statement, .values-list {
-            flex: 1;
-            min-width: 300px;
-        }
-        .mission-image {
-            flex-basis: 100%; 
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        .mission-image img {
-            max-width: 70%; 
-            height: auto;
-            border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-        }
-        .values-list ul {
-            list-style: none;
-        }
-        .values-list li {
-            background-color: #fff;
-            padding: 15px;
-            margin-bottom: 10px;
-            border-left: 5px solid var(--primary-color);
-            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-        }
-        .values-list strong {
-            color: var(--accent-color);
-        }
-
-        /* Tuition Specific */
-        .tuition-table {
-            width: 100%;
-            border-collapse: collapse;
-            text-align: left;
-            margin-top: 20px;
-        }
-        .tuition-table th, .tuition-table td {
-            padding: 15px;
-            border-bottom: 1px solid #ddd;
-        }
-        .tuition-table th {
-            background-color: var(--primary-color);
-            color: var(--light-text);
-            font-weight: bold;
-        }
-        .tuition-table tr:hover {
-            background-color: var(--secondary-color);
-        }
-        .note {
-            text-align: center;
-            margin-top: 20px;
-            font-style: italic;
-            color: #777;
-        }
-
-        /* Party Packages Specific - PATH UPDATED to simple file name */
-        .party-packages-container {
-            display: flex;
-            flex-direction: column;
-            gap: 40px;
-        }
-        .party-image-banner {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-        .party-image-banner img {
-            max-width: 80%; 
-            height: auto;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-        }
-        .party-packages {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-        .package-card {
-            background-color: #fff;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            border-top: 5px solid var(--accent-color);
-            transition: transform 0.3s;
-        }
-        .package-card:hover {
-            transform: translateY(-5px);
-        }
-        .package-card h3 {
-            color: var(--accent-color);
-            font-size: 1.8em;
-            font-family: var(--font-header);
-            text-align: center;
-        }
-        .package-card .price {
-            font-size: 2em;
-            font-weight: bold;
-            color: var(--primary-color);
-            text-align: center;
-            margin: 10px 0 20px;
-        }
-        .package-card ul {
-            list-style: none;
-        }
-        .package-card li {
-            padding: 8px 0;
-            border-bottom: 1px dotted var(--secondary-color);
-            display: flex;
-            align-items: center;
-        }
-        .package-card li::before {
-            content: '✓';
-            color: var(--accent-color);
-            margin-right: 10px;
-            font-weight: bold;
-        }
-        
-        /* Store & Donate Specific */
-        .store-donate-content p, .contact-content p {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        /* Contact Section */
-        #contact .section {
-            background-color: var(--secondary-color);
-        }
-        .contact-form-container {
-            background-color: #fff;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-        .contact-form label {
-            display: block;
-            margin-top: 15px;
-            font-weight: bold;
-        }
-        .contact-form input, .contact-form textarea {
-            width: 100%;
-            padding: 10px;
-            margin-top: 5px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-        }
-        .contact-form button {
-            width: 100%;
-            margin-top: 20px;
-            padding: 15px;
-            background-color: var(--accent-color);
-            color: var(--light-text);
-            border: none;
-            border-radius: 5px;
-            font-size: 1.1em;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-        .contact-form button:hover {
-            background-color: var(--primary-color);
-        }
-
-        /* Footer */
-        footer {
-            background-color: var(--accent-color);
-            color: var(--light-text);
-            text-align: center;
-            padding: 30px 5%;
-            margin-top: 40px;
-        }
-        .social-links a {
-            color: var(--light-text);
-            margin: 0 10px;
-            font-size: 1.5em;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-        .social-links a:hover {
-            color: var(--secondary-color);
-        }
-        footer p {
-            margin-top: 15px;
-            font-size: 0.9em;
-        }
-
-        /* Media Queries for Mobile Responsiveness */
-        @media (max-width: 768px) {
-            .nav-container {
-                flex-direction: column;
-            }
-            .logo h1 {
-                margin-bottom: 10px;
-            }
-            nav ul {
-                flex-direction: column;
-                text-align: center;
-                width: 100%;
-            }
-            nav ul li {
-                margin: 5px 0;
-            }
-            .hero h2 {
-                font-size: 2.5em;
-            }
-            .mission-grid {
-                flex-direction: column;
-            }
-            .party-image-banner img {
-                max-width: 100%;
-            }
-        }
-    </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Lark & Lavender Enrichment Center • Luxury Care & Play‑Based Learning</title>
+  <meta name="description" content="Premium childcare and enrichment in Albany, NY. Apply online, book luxury party packages, shop our store, donate to Tea Party with a Purpose, and access the parent app for sign‑in/out, photos, and messaging." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root { --lavender:#c9b6e4; --deep:#6b5ca5; --gold:#d7b77a; }
+    body { font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica Neue, Arial; background-image: url('office_front.png'); background-size: cover; background-position: center; background-attachment: fixed; background-repeat: no-repeat; background-color: var(--lavender); color: #2d2d2d; }
+    header, section, footer { background: rgba(255,255,255,0.9); backdrop-filter: blur(10px); }
+    h1, h2, h3, h4 { font-family: 'Playfair Display', serif; color: var(--deep); }
+    a { color: var(--deep) }
+    a:hover { color: var(--gold) }
+    .btn { display:inline-block; padding:.9rem 1.2rem; border-radius:1rem; box-shadow:0 8px 24px rgba(2,6,23,.08); transition:transform .15s ease, box-shadow .2s ease }
+    .btn:active { transform: translateY(1px) }
+    .btn-deep { background:var(--deep); color:#fff }
+    .btn-outline { border:1px solid var(--gold); color:var(--gold) }
+    .card { background:#fff; border-radius:1.25rem; box-shadow:0 12px 30px rgba(2,6,23,.06); border:1px solid rgba(2,6,23,.06) }
+    .kicker { letter-spacing:.12em; text-transform:uppercase; font-weight:600; font-size:.75rem; color:#64748b }
+  </style>
 </head>
 <body>
+  <!-- Header -->
+  <header class="p-6 shadow-lg border-b border-[var(--gold)]">
+    <div class="max-w-6xl mx-auto flex items-center justify-between">
+      <a href="#home" class="text-3xl font-semibold tracking-tight">Lark & Lavender</a>
+      <nav class="flex gap-6 text-sm">
+        <a href="#about">About</a>
+        <a href="#programs">Programs</a>
+        <a href="#apply">Apply</a>
+        <a href="#parties">Parties</a>
+        <a href="#store">Store</a>
+        <a href="#donate">Donate</a>
+        <a href="#parent-app">Parent App</a>
+      </nav>
+    </div>
+  </header>
 
-    <header>
-        <div class="nav-container">
-            <div class="logo">
-                <h1>Lark & Lavender Enrichment Center</h1>
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#about">About Us</a></li>
-                    <li><a href="#tuition">Tuition</a></li>
-                    <li><a href="#parties">Parties</a></li>
-                    <li><a href="#contact">Contact Us</a></li> 
-                    <li><a href="#store">Store</a></li>
-                    <li><a href="#donate">Donate</a></li>
-                </ul>
-            </nav>
-            <a href="#contact" class="cta-button">Inquire Now</a>
+  <!-- Hero / Cover -->
+  <section id="home" class="relative min-h-[80vh] flex flex-col justify-center items-center text-center">
+    <div class="absolute inset-0 bg-gradient-to-t from-white/90 via-white/70 to-white/40 pointer-events-none"></div>
+    <div class="relative bg-white/85 rounded-2xl p-10 shadow-xl max-w-3xl mx-4">
+      <img src="office_front.png" alt="Lark & Lavender office entrance" class="w-44 mx-auto mb-6 rounded-xl shadow" loading="lazy">
+      <h2 class="text-4xl md:text-5xl font-bold">Where Luxury Meets Learning</h2>
+      <p class="mt-3 text-lg text-slate-700">Premium childcare, extended‑hours drop‑off, unforgettable parties, and a curated store—under one elegant roof.</p>
+      <div class="mt-6 flex flex-wrap gap-3 justify-center">
+        <a href="#apply" class="btn btn-deep">Apply Online</a>
+        <a href="#parties" class="btn btn-outline">Book a Party</a>
+        <a href="#store" class="btn btn-outline">Visit Store</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about" class="py-16">
+    <div class="max-w-6xl mx-auto px-4 grid md:grid-cols-2 gap-10 items-center">
+      <div>
+        <p class="kicker">About Us</p>
+        <h3 class="text-3xl md:text-4xl">A loving, elegant space for growth</h3>
+        <p class="mt-4 text-slate-700">We blend research‑backed play with warm, high‑touch care. Our educators are trained in social‑emotional learning, literacy‑rich environments, and safety protocols. Families choose us for extended hours, premium environment, and consistent communication.</p>
+        <div class="mt-6 grid grid-cols-2 gap-3 text-sm">
+          <div class="card p-4"><strong>Small Ratios</strong><br><span class="text-slate-600">More attention for every child</span></div>
+          <div class="card p-4"><strong>Play‑Based</strong><br><span class="text-slate-600">Hands‑on learning daily</span></div>
+          <div class="card p-4"><strong>Extended Hours</strong><br><span class="text-slate-600">7:00 AM – 12:00 AM</span></div>
+          <div class="card p-4"><strong>Parent App</strong><br><span class="text-slate-600">Photos, messages, billing</span></div>
         </div>
-    </header>
+      </div>
+      <div class="aspect-[4/3] rounded-2xl overflow-hidden shadow ring-1 ring-slate-200">
+        <img src="gallery_classroom_1.jpg" alt="Classroom with reading nook" class="w-full h-full object-cover" loading="lazy"/>
+      </div>
+    </div>
+  </section>
 
-    <main>
-        <section id="home" class="hero">
-            <h2>Luxury Care & Play-Based Learning</h2>
-            <p>A safe haven where every child's potential can bloom, accommodating the schedules of hardworking families.</p>
-            <a href="#contact" class="cta-button">Book a Tour / Contact Us</a> 
-        </section>
-
-        <section id="about" class="section">
-            <h2>Our Mission & The 4L Curriculum™</h2>
-            <div class="mission-grid">
-                
-                <div class="mission-image">
-                    <img src="./about.png" alt="Lark & Lavender Toddler Room, showing a bright, organized, and elegant learning environment." style="max-width: 70%;" >
-                </div>
-                
-                <div class="mission-statement">
-                    <h3>Our Purpose</h3>
-                    <p>We strive to be more than just a daycare; we are an essential partner for parents working non-traditional hours, ensuring their child receives the same level of **safety, stimulation, and care** regardless of the clock.</p>
-                    <p>The Lark and Lavender Enrichment Center is dedicated to providing high-quality, comprehensive childcare and enrichment that supports the unique needs of modern, working families.</p>
-                </div>
-                <div class="values-list">
-                    <h3>Our Core Values</h3>
-                    <p>We fulfill this mission by operating according to the **4L Curriculum™** framework:</p>
-                    <ul>
-                        <li><strong>Luxury:</strong> Cultivating a calm, inviting, and respectful environment where children and staff feel valued and thrive.</li>
-                        <li><strong>Learning:</strong> Fostering play-based, research-backed academic foundations that encourage curiosity and critical thinking.</li>
-                        <li><strong>Love:</strong> Prioritizing nurturing emotional wellness, social-emotional development, and a strong sense of belonging for every child.</li>
-                        <li><strong>Legacy:</strong> Instilling confidence, celebrating diversity, and building cultural pride, preparing students to be compassionate leaders.</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <section id="tuition" class="section">
-            <h2>Weekly Tuition Rates</h2>
-            <table class="tuition-table">
-                <thead>
-                    <tr>
-                        <th>Program</th>
-                        <th>Age Group</th>
-                        <th>Schedule</th>
-                        <th>Weekly Rate</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Infant Care</td>
-                        <td>Infants</td>
-                        <td>Full-Time (7 AM – 5 PM)</td>
-                        <td>$400.00</td>
-                    </tr>
-                    <tr>
-                        <td>Toddler Care</td>
-                        <td>Toddlers</td>
-                        <td>Full-Time (7 AM – 5 PM)</td>
-                        <td>$375.00</td>
-                    </tr>
-                    <tr>
-                        <td>Preschool Program</td>
-                        <td>Pre-K</td>
-                        <td>Full-Time (7 AM – 5 PM)</td>
-                        <td>$350.00</td>
-                    </tr>
-                    <tr>
-                        <td>After-School Enrichment</td>
-                        <td>School-Age</td>
-                        <td>Part-Time</td>
-                        <td>$225.00</td>
-                    </tr>
-                </tbody>
-            </table>
-            <div class="note">
-                <p>After-Hours Drop-Off Service (5 PM – 12 AM): $45 for two hours (Evening Service).</p>
-            </div>
-        </section>
-
-        <section id="parties" class="section">
-            <h2>Luxe Weekend Party Enrichment Packages</h2>
-            <p style="text-align: center;">Elevate your child's celebration with our elegant, themed, and stress-free packages.</p>
-            
-            <div class="party-image-banner">
-                <img src="./parties.png" alt="Troop Beverly Hills themed sleepover party with teepee tents and badge-making station." >
-            </div>
-
-            <div class="party-packages">
-                
-                <div class="package-card">
-                    <h3>The Glamping Gala</h3>
-                    <p class="price">$450.00</p>
-                    <p style="font-style: italic; margin-bottom: 15px;">**Right from Troop Beverly Hills!** A glamorous, nostalgic adventure where luxury meets outdoor fun.</p>
-                    <ul>
-                        <li>**4 Hours** of Supervised Fun (Full Shift)</li>
-                        <li>Up to **12 Children**</li>
-                        <li>Custom-Designed **Birthday Cake**</li>
-                        <li>Dedicated **Badge-Making Station** (Thematic Activity)</li>
-                        <li>**Full Meal Service**</li>
-                        <li>The Ultimate Indulgence: a complete, worry-free afternoon!</li>
-                    </ul>
-                </div>
-
-                <div class="package-card">
-                    <h3>The Lilac Luxe</h3>
-                    <p class="price">Inquire for Pricing</p>
-                    <p style="font-style: italic; margin-bottom: 15px;">The perfect balance of elegance and fun for intimate celebrations.</p>
-                    <ul>
-                        <li>**3 Hours** of Supervised Fun</li>
-                        <li>Up to **10 Children**</li>
-                        <li>Basic Elegant Decorations</li>
-                        <li>Standard Snack & Juice Service</li>
-                        <li>Tailored to one of our classic sensory themes.</li>
-                        <li>Perfect for younger children.</li>
-                    </ul>
-                </div>
-
-                <div class="package-card">
-                    <h3>The Lavender Dream</h3>
-                    <p class="price">Inquire for Pricing</p>
-                    <p style="font-style: italic; margin-bottom: 15px;">The ultimate, extended package for a truly memorable celebration.</p>
-                    <ul>
-                        <li>**4 Hours** (Full Shift) of Supervised Fun</li>
-                        <li>Up to **12 Children**</li>
-                        <li>Custom Cake</li>
-                        <li>Specialized Thematic Activity</li>
-                        <li>Full Meal Service</li>
-                        <li>Transforms your celebration into a truly luxurious event.</li>
-                    </ul>
-                </div>
-
-            </div>
-        </section>
-
-        <section id="contact" class="section">
-            <h2>Contact Us & Inquire Now</h2>
-            <p style="text-align: center;">Ready for enrollment or to book a party? Send us a message!</p>
-            <div class="contact-form-container">
-                <form class="contact-form" action="YOUR_FORM_SUBMISSION_URL" method="POST">
-                    <label for="name">Name:</label>
-                    <input type="text" id="name" name="name" required>
-
-                    <label for="email">Email:</label>
-                    <input type="email" id="email" name="email" required>
-                    
-                    <label for="phone">Phone:</label>
-                    <input type="tel" id="phone" name="phone">
-
-                    <label for="interest">Interested In:</label>
-                    <select id="interest" name="interest">
-                        <option value="enrollment">Daycare Enrollment</option>
-                        <option value="party">Party Package Booking</option>
-                        <option value="general">General Inquiry</option>
-                    </select>
-
-                    <label for="message">Message:</label>
-                    <textarea id="message" name="message" rows="5" required></textarea>
-
-                    <button type="submit">Submit Inquiry</button>
-                </form>
-            </div>
-            <p style="text-align: center; margin-top: 20px;">**Phone:** (555) 555-5555 | **Email:** info@larkandlavender.com</p>
-        </section>
-        
-        <section id="store" class="section">
-            <h2>Lark & Lavender Store</h2>
-            <div class="store-donate-content">
-                <p>Shop our curated collection of luxury party supplies, enrichment kits, and beautiful items perfect for gifting or bringing the Lark & Lavender experience home.</p>
-                <p>*(Products, images, and prices coming soon!)*</p>
-                <a href="#contact" class="cta-button">Contact for Pre-Orders</a>
-            </div>
-        </section>
-
-        <section id="donate" class="section">
-            <h2>Support "Tea Party with a Purpose" Foundation</h2>
-            <div class="store-donate-content">
-                <p>We are proud to support **Teaparty with a Purpose Foundation**, a non-profit dedicated to enriching the lives of children in our community.</p>
-                <p>Your generous donation helps provide access to quality enrichment programs and joyful experiences for families in need.</p>
-                <a href="#" class="cta-button" style="background-color: #F67280;">Donate Now</a>
-            </div>
-        </section>
-        
-    </main>
-
-    <footer>
-        <div class="social-links">
-            <a href="#" target="_blank">Facebook</a> |
-            <a href="#" target="_blank">Instagram</a> |
-            <a href="#" target="_blank">TikTok</a> |
-            <a href="#" target="_blank">Blog (Coming Soon)</a>
+  <!-- Programs & Tuition -->
+  <section id="programs" class="py-16 bg-slate-50">
+    <div class="max-w-6xl mx-auto px-4">
+      <h3 class="text-3xl">Programs & Tuition</h3>
+      <div class="mt-8 grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="card p-6">
+          <h4 class="font-semibold text-lg">Infants</h4>
+          <p class="mt-2 text-sm text-slate-600">6 wks – 18 mos</p>
+          <p class="mt-4 text-2xl font-bold text-[var(--deep)]">$400 / week</p>
+          <p class="mt-2 text-sm">Small ratios, gentle routines, sensory play.</p>
         </div>
-        <p>&copy; 2025 Lark and Lavender Enrichment Center. All Rights Reserved.</p>
-    </footer>
+        <div class="card p-6">
+          <h4 class="font-semibold text-lg">Toddlers</h4>
+          <p class="mt-2 text-sm text-slate-600">18 mos – 3 yrs</p>
+          <p class="mt-4 text-2xl font-bold text-[var(--deep)]">$375 / week</p>
+          <p class="mt-2 text-sm">Language, movement, music, and art.</p>
+        </div>
+        <div class="card p-6">
+          <h4 class="font-semibold text-lg">Preschool</h4>
+          <p class="mt-2 text-sm text-slate-600">3 – 5 yrs</p>
+          <p class="mt-4 text-2xl font-bold text-[var(--deep)]">$350/ week</p>
+          <p class="mt-2 text-sm">Pre‑K readiness with play‑based academics.</p>
+        </div>
+        <div class="card p-6">
+          <h4 class="font-semibold text-lg">After‑School</h4>
+          <p class="mt-2 text-sm text-slate-600">5 – 12 yrs</p>
+          <p class="mt-4 text-2xl font-bold text-[var(--deep)]">$275 / week</p>
+          <p class="mt-2 text-sm">Homework help, clubs, enrichment.</p>
+        </div>
+      </div>
+      <div class="mt-8"><a href="#apply" class="btn btn-deep">Start Application</a></div>
+    </div>
+  </section>
 
+  <!-- Gallery -->
+  <section id="gallery" class="py-16">
+    <div class="max-w-6xl mx-auto px-4">
+      <h3 class="text-3xl">Gallery</h3>
+      <p class="text-slate-600 mt-2">Replace images with your own files for a real look at our space and events.</p>
+      <div class="mt-8 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        <img class="rounded-xl object-cover w-full h-44" src="gallery_party_1.jpg" alt="Party setup" loading="lazy"/>
+        <img class="rounded-xl object-cover w-full h-44" src="gallery_party_2.jpg" alt="Teepee tents" loading="lazy"/>
+        <img class="rounded-xl object-cover w-full h-44" src="gallery_classroom_2.jpg" alt="Art table" loading="lazy"/>
+        <img class="rounded-xl object-cover w-full h-44" src="gallery_reading.jpg" alt="Reading corner" loading="lazy"/>
+      </div>
+    </div>
+  </section>
+
+  <!-- Parties -->
+  <section id="parties" class="py-16 bg-slate-50">
+    <div class="max-w-6xl mx-auto px-4">
+      <h3 class="text-3xl">Party Experiences</h3>
+      <div class="mt-8 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <article class="card overflow-hidden">
+          <img src="beverly_glamping.jpg" alt="Beverly Hills Glamping Gala" class="w-full h-40 object-cover" loading="lazy"/>
+          <div class="p-6">
+            <h4 class="font-semibold text-lg">Beverly Hills Glamping Gala</h4>
+            <p class="mt-2 text-sm text-slate-600">8 guests • 2 hrs • faux camp glam, teepees, badge‑making.</p>
+            <p class="mt-3 text-[var(--deep)] font-semibold">$450</p>
+            <div class="mt-4 flex gap-3">
+              <a href="#booking" class="btn btn-deep">Check Availability</a>
+              <a href="#buy-glamping" class="btn btn-outline">Reserve</a>
+            </div>
+          </div>
+        </article>
+        <article class="card overflow-hidden">
+          <img src="lilac_luxe.jpg" alt="Lilac Luxe Tea" class="w-full h-40 object-cover" loading="lazy"/>
+          <div class="p-6">
+            <h4 class="font-semibold text-lg">Lilac Luxe Tea</h4>
+            <p class="mt-2 text-sm text-slate-600">12 guests • 2 hrs • vintage china + craft activity.</p>
+            <p class="mt-3 text-[var(--deep)] font-semibold">From $350</p>
+            <div class="mt-4 flex gap-3">
+              <a href="#booking" class="btn btn-deep">Check Availability</a>
+              <a href="#buy-lilac" class="btn btn-outline">Reserve</a>
+            </div>
+          </div>
+        </article>
+        <article class="card overflow-hidden">
+          <img src="lavender_dream.jpg" alt="Lavender Dream" class="w-full h-40 object-cover" loading="lazy"/>
+          <div class="p-6">
+            <h4 class="font-semibold text-lg">Lavender Dream</h4>
+            <p class="mt-2 text-sm text-slate-600">8 guests • 2 hrs • pastel décor + cupcake decorating.</p>
+            <p class="mt-3 text-[var(--deep)] font-semibold">From $325</p>
+            <div class="mt-4 flex gap-3">
+              <a href="#booking" class="btn btn-deep">Check Availability</a>
+              <a href="#buy-dream" class="btn btn-outline">Reserve</a>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <!-- Booking calendar embed (Calendly or Acuity) -->
+      <div id="booking" class="mt-10 card overflow-hidden">
+        <iframe title="Party Booking Calendar" src="https://calendly.com/your-org/party-booking?hide_event_type_details=1&hide_gdpr_banner=1" class="w-full h-[700px]" loading="lazy"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- Store -->
+  <section id="store" class="py-16">
+    <div class="max-w-6xl mx-auto px-4">
+      <h3 class="text-3xl">Curated Store</h3>
+      <p class="text-slate-600 mt-2">Secure checkout with Shopify. Replace placeholders with your credentials to render Buy Buttons.</p>
+      <div class="mt-8 grid md:grid-cols-2 lg:grid-cols-3 gap-6" id="shopify-collection"></div>
+    </div>
+  </section>
+
+  <!-- Tuition Payments (Stripe Payment Links) -->
+  <section id="tuition" class="py-16 bg-slate-50">
+    <div class="max-w-6xl mx-auto px-4">
+      <h3 class="text-3xl">Tuition Payments</h3>
+      <p class="text-slate-600 mt-2">Pay securely online. These buttons use <strong>Stripe Payment Links</strong> so your card info never touches our site.</p>
+      <div class="mt-6 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <a href="https://buy.stripe.com/YOUR_INFANT_LINK" class="card p-5 hover:bg-slate-50"><div class="flex items-center justify-between"><div><p class="font-semibold">Infant Weekly Tuition</p><p class="text-sm text-slate-600">Auto‑pay available</p></div><span class="text-[var(--deep)] font-semibold">$XXX</span></div></a>
+        <a href="https://buy.stripe.com/YOUR_TODDLER_LINK" class="card p-5 hover:bg-slate-50"><div class="flex items-center justify-between"><div><p class="font-semibold">Toddler Weekly Tuition</p><p class="text-sm text-slate-600">Auto‑pay available</p></div><span class="text-[var(--deep)] font-semibold">$XXX</span></div></a>
+        <a href="https://buy.stripe.com/YOUR_PRESCHOOL_LINK" class="card p-5 hover:bg-slate-50"><div class="flex items-center justify-between"><div><p class="font-semibold">Preschool Weekly Tuition</p><p class="text-sm text-slate-600">Auto‑pay available</p></div><span class="text-[var(--deep)] font-semibold">$XXX</span></div></a>
+      </div>
+      <p class="text-xs text-slate-500 mt-3">Payments are processed by Stripe. We never store card details.</p>
+    </div>
+  </section>
+
+  <!-- Apply (Online Application Form) -->
+  <section id="apply" class="py-16">
+    <div class="max-w-3xl mx-auto px-4">
+      <h3 class="text-3xl">Apply Online</h3>
+      <p class="text-slate-600 mt-2">Secure form for guardian details, child info, program selection, and start date.</p>
+      <div class="mt-6 rounded-2xl ring-1 ring-slate-200 overflow-hidden">
+        <iframe title="Lark & Lavender Application" src="https://tally.so/r/YOUR_FORM_ID" width="100%" height="900" frameborder="0" marginheight="0" marginwidth="0" loading="lazy"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- Donate -->
+  <section id="donate" class="py-16 bg-slate-50">
+    <div class="max-w-3xl mx-auto px-4">
+      <h3 class="text-3xl">Donate • Tea Party with a Purpose</h3>
+      <p class="text-slate-600 mt-2">Support respite care, enrichment scholarships, and family programs for our community.</p>
+      <div class="mt-6 card overflow-hidden p-4">
+        <iframe title="Donate to Lark & Lavender" src="https://donorbox.org/embed/YOUR_CAMPAIGN" name="donorbox" allowpaymentrequest="allowpaymentrequest" seamless="seamless" frameborder="0" scrolling="no" height="900px" width="100%" loading="lazy"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- Parent App / Portal -->
+  <section id="parent-app" class="py-16">
+    <div class="max-w-6xl mx-auto px-4 grid md:grid-cols-2 gap-10 items-center">
+      <div>
+        <h3 class="text-3xl">Parent App</h3>
+        <p class="mt-4 text-slate-700">Use our secure app for sign‑in/out, messaging, daily photos, and payments. New families receive an invite after application approval.</p>
+        <ul class="mt-4 list-disc list-inside text-slate-700">
+          <li>Quick QR sign‑in/out at the door</li>
+          <li>Daily photos and activity updates</li>
+          <li>Payment and invoices in one place</li>
+        </ul>
+        <div class="mt-6 flex flex-wrap gap-3">
+          <a href="https://schools.mybrightwheel.com/sign-in" target="_blank" class="btn btn-deep">Open Parent Portal</a>
+          <a href="#apply" class="btn btn-outline">Apply First</a>
+        </div>
+      </div>
+      <div class="aspect-[4/3] rounded-2xl overflow-hidden shadow ring-1 ring-slate-200">
+        <img src="parent_app_screenshot.jpg" alt="Parent app preview" class="w-full h-full object-cover" loading="lazy"/>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-10 text-sm border-t">
+    <div class="max-w-6xl mx-auto px-4 grid md:grid-cols-2 gap-6 items-center">
+      <p>© <span id="year"></span> Lark & Lavender Group LLC • “Where Luxury Meets Learning” • Albany, NY • <a href="mailto:dtgofusa@gmail.com" class="underline">dtgofusa@gmail.com</a> • <a href="tel:+19194373995" class="underline">(919) 437‑3995</a></p>
+      <div class="justify-self-end flex gap-4">
+        <a href="#apply">Apply</a>
+        <a href="#parties">Parties</a>
+        <a href="#store">Store</a>
+        <a href="#donate">Donate</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Shopify Buy Button SDK (toggle on when ready) -->
+  <script>
+    const USE_SHOPIFY = false; // set to true after adding credentials
+    if (USE_SHOPIFY) {
+      const s=document.createElement('script'); s.async=true; s.src='https://cdn.shopify.com/shopifycloud/buy-button-ui/assets/v2/latest/buy-button-storefront.min.js'; s.onload=initShopify; document.head.appendChild(s);
+    }
+    function initShopify(){
+      const client = ShopifyBuy.buildClient({ domain: 'YOUR-SHOP.myshopify.com', storefrontAccessToken: 'YOUR_STOREFRONT_TOKEN' });
+      ShopifyBuy.UI.onReady(client).then(function (ui) {
+        ui.createComponent('product', { id:'GLAMPING_PRODUCT_ID', node: document.getElementById('buy-glamping') });
+        ui.createComponent('product', { id:'LILAC_PRODUCT_ID', node: document.getElementById('buy-lilac') });
+        ui.createComponent('product', { id:'DREAM_PRODUCT_ID', node: document.getElementById('buy-dream') });
+        // Render a whole collection into #shopify-collection if preferred
+      });
+    }
+    document.getElementById('year').textContent=new Date().getFullYear();
+  </script>
 </body>
 </html>
+
